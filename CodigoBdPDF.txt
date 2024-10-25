@@ -1,0 +1,13 @@
+SELECT  
+    co.nome, co.cpf,  
+    ca.cargo,  
+    se.setor, 
+    ve.hora_extra_qtd, ve.hora_extra_valor, ve.hora_extra_fd_qtd, ve.hora_extra_fd_valor, ve.salario_familia_valor,  
+    de.inss_valor, de.vt_valor, de.irrf_valor, de.faltas_qtd, de.faltas_valor, de.desconto_total 
+    FROM  
+    colaborador co  
+    JOIN cargo ca ON co.id_cargo = ca.id_cargo  
+    JOIN setor se ON se.id_setor = co.id_setor  
+    JOIN vencimento ve ON ve.id_colab = co.id_colab  
+    JOIN desconto de ON de.id_colab = co.id_colab  
+    WHERE co.id_colab = ? AND co.cpf = ? ;
